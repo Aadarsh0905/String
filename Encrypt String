@@ -1,0 +1,43 @@
+package TCS_Practice_GFG;
+import java.util.*;
+
+public class EncryptTheString {
+    public static String Encrypt(String s) {
+//        char[] arr = s.toCharArray();
+//        Arrays.sort(arr);
+//        String sorted = new String(arr);
+        StringBuilder res = new StringBuilder();
+        int cnt = 1;
+        int n = s.length();
+        for (int i = 1; i < n; i++) {
+            if (s.charAt(i - 1) == s.charAt(i)) {
+                cnt++;
+            } else {
+                res.append(s.charAt(i - 1));
+                res.append(cnt);
+                cnt = 1;
+            }
+        }
+        res.append(s.charAt(s.length() - 1));
+        res.append(cnt);
+
+        char[] ar = res.toString().toCharArray();
+        int i = 0;
+        int j = ar.length - 1;
+        while (i < j) {
+            char temp = ar[i];
+            ar[i] = ar[j];
+            ar[j] = temp;
+            i++;
+            j--;
+        }
+
+
+
+        return new String(ar);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Encrypt("aaaaabbbbbbbcccccccc"));
+    }
+}
