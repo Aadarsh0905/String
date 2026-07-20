@@ -1,0 +1,27 @@
+package TCS_Practice_GFG;
+
+public class RemoveAllCharExceptAlphabet {
+    public static String removeCharExceptAlphabet(String s){
+        StringBuilder res=new StringBuilder();
+        StringBuilder s1=new StringBuilder();
+        for(int i=0;i<26;i++){
+            char ch=(char)(65+i);
+            s1.append(ch);
+
+            char ch1=(char)(97+i);
+            s1.append(ch1);
+        }
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+
+            if(s1.indexOf(String.valueOf(ch))!=-1)res.append(ch);
+        }
+        if(res.length()==0)return "-1";
+
+        return res.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(removeCharExceptAlphabet("@#$%^Z&Z(*#>?<>"));
+    }
+}
